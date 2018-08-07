@@ -26,8 +26,8 @@ class RegistActivity : BaseMvpActivity<RegisterPresenter>(),RegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regist)
         mRegisterBtn.setOnClickListener {
-//            startActivity<TestActivity>("id" to 10)
-//            toast("点击了啊哈哈哈")
+            startActivity<TestActivity>("id" to 10)
+            toast("点击了啊哈哈哈")
             mPresenter = RegisterPresenter()
             mPresenter.mView = this
             mPresenter.register("","","")

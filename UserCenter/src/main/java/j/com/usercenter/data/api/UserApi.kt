@@ -1,8 +1,10 @@
 package j.com.usercenter.data.api
 
 import j.com.baselibrary.data.protocol.BaseResp
+import j.com.usercenter.data.TestBean
 import j.com.usercenter.data.protocol.RegisterReq
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import rx.Observable
 
@@ -18,4 +20,10 @@ interface UserApi {
      */
     @POST("userCenter/register")
     fun register(@Body req: RegisterReq):Observable<BaseResp<String>>
+
+    /*
+   *  test
+   */
+    @GET("article/list/0/json")
+    fun test():Observable<TestBean>
 }
