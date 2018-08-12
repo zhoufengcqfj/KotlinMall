@@ -16,17 +16,17 @@ import javax.inject.Inject
 /**
  * Created by zhoufeng on 2018/8/6.
  */
-class TestPresenter : BasePresenter<TestView>(){
-
+class TestPresenter @Inject constructor(): BasePresenter<TestView>(){
+    @Inject
+    lateinit var userService :TestServiceImpl
     fun test(){
-        val userService = TestServiceImpl()
+//        val userService = TestServiceImpl()
+        mView.showLoading()
         userService.test()
-                .execute(object :BaseSubscriber<TestBean>(){
+                .execute(object :BaseSubscriber<TestBean>(mView){
                     override fun onNext(t: TestBean) {
                         mView.onGetResult(t)
                     }
-                })
-
+                },lifecycleProvider)
     }
-
 }

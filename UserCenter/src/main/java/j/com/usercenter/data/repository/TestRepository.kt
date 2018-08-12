@@ -6,6 +6,7 @@ import j.com.usercenter.data.TestBean
 import j.com.usercenter.data.api.UserApi
 import j.com.usercenter.data.protocol.RegisterReq
 import rx.Observable
+import javax.inject.Inject
 
 /**
  * desc:  <br/>
@@ -13,7 +14,7 @@ import rx.Observable
  * author: 周峰 <br/>
  * since V 1.0 <br/>
  */
-class TestRepository {
+class TestRepository @Inject constructor(){
     fun  test(): Observable<TestBean> {
         return RetrofitFactory.instance.create(UserApi::class.java)
                 .test()

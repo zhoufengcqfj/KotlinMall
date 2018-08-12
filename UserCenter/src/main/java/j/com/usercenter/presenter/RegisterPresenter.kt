@@ -19,10 +19,13 @@ class RegisterPresenter @Inject constructor() :BasePresenter<RegisterView>(){
     fun register(mobile:String,verifyCode:String,pwd:String){
         val userService = UserServiceImpl()
         userService.register(mobile,verifyCode,pwd)
-                .execute(object :BaseSubscriber<Boolean>(){
-                    override fun onNext(t: Boolean) {
-                        mView.onRegisterResult(t)
-                    }
-                })
+        mView.showLoading()
+
+//        userService.register(mobile, pwd, verifyCode).excute(object : BaseSubscriber<Boolean>(mView) {
+//            override fun onNext(t: Boolean) {
+//                if (t)
+//                    mView.onRegisterResult("注册成功")
+//            }
+//        }, lifecycleProvider)
     }
 }

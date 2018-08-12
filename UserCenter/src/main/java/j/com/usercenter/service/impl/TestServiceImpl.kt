@@ -11,13 +11,16 @@ import rx.Observable
 import rx.functions.Action
 import rx.functions.Action1
 import rx.functions.Func1
+import javax.inject.Inject
 
 /**
  * Created by zhoufeng on 2018/8/6.
  */
-class TestServiceImpl : TestService {
+class TestServiceImpl @Inject constructor(): TestService {
+    @Inject
+     lateinit var repository :TestRepository
     override fun test(): Observable<TestBean> {
-        val repository = TestRepository()
+
          return repository.test()
 
 //                 .flatMap(object :Func1<TestBean,
